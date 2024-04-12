@@ -1,5 +1,5 @@
-import 'package:testproject2/pages/settings.dart';
-import 'package:testproject2/services/auth/authService.dart';
+import 'package:project2/pages/settings.dart';
+import 'package:project2/services/auth/authService.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {

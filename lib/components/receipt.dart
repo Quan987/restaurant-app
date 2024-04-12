@@ -1,4 +1,4 @@
-import 'package:testproject2/models/restaurant.dart';
+import 'package:project2/models/restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

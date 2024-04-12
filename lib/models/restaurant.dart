@@ -1,5 +1,5 @@
-import 'package:testproject2/models/cartitem.dart';
-import 'package:testproject2/models/food.dart';
+import 'package:project2/models/cartitem.dart';
+import 'package:project2/models/food.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

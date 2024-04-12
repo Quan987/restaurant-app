@@ -1,6 +1,6 @@
-import 'package:testproject2/components/quantityselector.dart';
-import 'package:testproject2/models/cartitem.dart';
-import 'package:testproject2/models/restaurant.dart';
+import 'package:project2/components/quantityselector.dart';
+import 'package:project2/models/cartitem.dart';
+import 'package:project2/models/restaurant.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

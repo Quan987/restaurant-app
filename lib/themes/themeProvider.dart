@@ -1,5 +1,5 @@
-import 'package:testproject2/themes/darkMode.dart';
-import 'package:testproject2/themes/lightMode.dart';
+import 'package:project2/themes/darkMode.dart';
+import 'package:project2/themes/lightMode.dart';
 import 'package:flutter/material.dart';
 
 class ThemeProvider extends ChangeNotifier {

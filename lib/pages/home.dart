@@ -1,12 +1,12 @@
-import 'package:testproject2/components/currentLocation.dart';
-import 'package:testproject2/components/descriptionbox.dart';
-import 'package:testproject2/components/drawer.dart';
-import 'package:testproject2/components/foodtile.dart';
-import 'package:testproject2/components/silverappbar.dart';
-import 'package:testproject2/components/tabbar.dart';
-import 'package:testproject2/models/food.dart';
-import 'package:testproject2/models/restaurant.dart';
-import 'package:testproject2/pages/food.dart';
+import 'package:project2/components/currentLocation.dart';
+import 'package:project2/components/descriptionbox.dart';
+import 'package:project2/components/drawer.dart';
+import 'package:project2/components/foodtile.dart';
+import 'package:project2/components/silverappbar.dart';
+import 'package:project2/components/tabbar.dart';
+import 'package:project2/models/food.dart';
+import 'package:project2/models/restaurant.dart';
+import 'package:project2/pages/food.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,7 +1,7 @@
-import 'package:testproject2/firebase_options.dart';
-import 'package:testproject2/models/restaurant.dart';
-import 'package:testproject2/services/auth/authGate.dart';
-import 'package:testproject2/themes/themeProvider.dart';
+import 'package:project2/firebase_options.dart';
+import 'package:project2/models/restaurant.dart';
+import 'package:project2/services/auth/authGate.dart';
+import 'package:project2/themes/themeProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
