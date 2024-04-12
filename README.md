@@ -1,37 +1,36 @@
-# Expense Tracker Application
+# Food Delivery Application
 
 ## Overview
-Welcome to the Expense Tracker Application project repository! This project aims to develop a user-friendly mobile application that empowers individuals to efficiently track their expenses and manage their budgets effectively. The Expense Tracker Application provides a comprehensive financial management solution by integrating features such as expense categorization, budget goal setting, and visual reporting.
+Welcome to our Food Delivery Application project repository! The primary goal of this project is to develop a user-friendly mobile application that enables customers to discover, order, and track the delivery of a wide variety of restaurant meals. The Food Delivery Application aims to provide a convenient and efficient solution for users to browse menus, place orders, and receive on-demand deliveries, simplifying the overall food ordering and delivery experience.
 
 ## Group Members:
-- Armaan Hirani
 - Sophie Nguyen
+- Quan Tran
 
 ## Project Proposal
-Please refer to the [Project Proposal](https://drive.google.com/file/d/1ZCvng3cCCDchbiO5DMv8Z8BEAj_ptnc5/view?usp=sharing) file for detailed information about the project.
+Please refer to the [Project Proposal](https://drive.google.com/file/d/1Vieu1Uh5IhnMb9_NPR-LeZki-tTEqgGA/view?usp=sharing) file for detailed information about the project.
 
 ## Tech Stack
-- **Flutter**: Dart-based framework for building cross-platform mobile applications.
-- **SQLite**: Local database for data storage on mobile devices.
-- **Flutter Charts**: Library for integrating visual charts into Flutter apps.
+- **Flutter (Dart-based)**: Cross-platform mobile application development framework.
+- **Firebase**: Provides authentication and real-time database services.
+- **Google Maps API**: Integrates location services and delivery tracking features.
 - **Git**: Version control system for collaboration and code management.
 - **Code Editors and IDEs**: Visual Studio Code, Android Studio, Xcode, etc.
-- **Testing Frameworks**: XCTest for iOS, Espresso for Android.
 
 ## Project Details
-- [**Google Drive**](https://drive.google.com/drive/folders/1pYyoua2EAXnyyNQ7c07HI2vI_Lqmipje?usp=sharing)
+- [**Google Drive**](https://drive.google.com/drive/folders/19V_L_YPkdfBc7EBRdsGwQZ_B7kb3irFX?usp=sharing)
 - [**APK File**](): (update later)
-- [**PowerPoint Presentation**](https://docs.google.com/presentation/d/17WJnkJnWfcXv93oxpsV9CiSMbfw1Va6S/edit?usp=sharing&ouid=115063291951967236235&rtpof=true&sd=true): (just a template so far)
+- [**PowerPoint Presentation**](https://docs.google.com/presentation/d/1-mUtVWHvwxqZzEBvqExIQ4lfc3jhRgiE/edit?usp=sharing&ouid=115063291951967236235&rtpof=true&sd=true): (just a template so far)
 - [**Youtube Video**](): (update later)
 
 ## Key Features
-- **Expense Categorization**: Users can categorize expenses into customizable categories for better organization and analysis.
-- **Budget Goal Setting**: Enable users to set monthly or periodic budget limits for overall spending to promote better financial planning.
-- **Visual Reporting**: Generate insightful visual reports and charts to provide users with a comprehensive overview of their spending habits.
+- **Diverse Restaurant Offerings**: The application will provide users with a wide range of restaurants available for on-demand delivery.
+- **Seamless Order Placement and Tracking**: Users will be able to easily place orders, select delivery options, and track the status of their deliveries in real-time.
+- **User-Friendly Interface and Navigation**: The application will feature an intuitive and visually appealing user interface, with a focus on easy navigation.
 
 ## Running Application
 
-To run the Expense Tracker Application locally on your machine, follow these steps:
+To run the Food Delivery Application locally on your machine, follow these steps:
 
 ### Prerequisites
 
@@ -58,13 +57,13 @@ To run the Expense Tracker Application locally on your machine, follow these ste
    flutter run
 
 ## Contributing
-We welcome contributions from the community! If you'd like to contribute to the Expense Tracker Application project, please follow this [CONTRIBUTING](https://github.com/CSC4360Spring2024/Project1/blob/main/CONTRIBUTING.md).
+We welcome contributions from the community! If you'd like to contribute to the Food Delivery Application project, please follow this [CONTRIBUTING](https://github.com/CSC4360Project2/project2/blob/main/CONTRIBUTING.md).
 
 ## License
-This project is licensed under the [LICENSE](https://github.com/CSC4360Spring2024/Project1/blob/main/LICENSE).
+This project is licensed under the [LICENSE](https://github.com/CSC4360Project2/project2/blob/main/LICENSE).
 
 ## Contact
-For any inquiries or suggestions regarding the Expense Tracker Application project, please contact:
+For any inquiries or suggestions regarding the Food Delivery Application project, please contact:
 
 - Sophie Nguyen: [nnguyen177@student.gsu.edu](mailto:nnguyen177@student.gsu.edu)
 
