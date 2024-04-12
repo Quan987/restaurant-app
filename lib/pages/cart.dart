@@ -1,7 +1,7 @@
-import 'package:testproject2/components/button.dart';
-import 'package:testproject2/components/carttile.dart';
-import 'package:testproject2/models/restaurant.dart';
-import 'package:testproject2/pages/payment.dart';
+import 'package:project2/components/button.dart';
+import 'package:project2/components/carttile.dart';
+import 'package:project2/models/restaurant.dart';
+import 'package:project2/pages/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

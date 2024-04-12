@@ -1,4 +1,4 @@
-import 'package:testproject2/pages/cart.dart';
+import 'package:project2/pages/cart.dart';
 import 'package:flutter/material.dart';
 
 class MySilverAppbar extends StatelessWidget {

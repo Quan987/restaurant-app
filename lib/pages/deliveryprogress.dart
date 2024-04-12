@@ -1,6 +1,6 @@
-import 'package:testproject2/components/receipt.dart';
-import 'package:testproject2/models/restaurant.dart';
-import 'package:testproject2/services/database/firestore.dart';
+import 'package:project2/components/receipt.dart';
+import 'package:project2/models/restaurant.dart';
+import 'package:project2/services/database/firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,5 +1,5 @@
-import 'package:testproject2/components/button.dart';
-import 'package:testproject2/pages/deliveryprogress.dart';
+import 'package:project2/components/button.dart';
+import 'package:project2/pages/deliveryprogress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 

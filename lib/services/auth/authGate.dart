@@ -1,5 +1,5 @@
-import 'package:testproject2/pages/home.dart';
-import 'package:testproject2/services/auth/login_or_register.dart';
+import 'package:project2/pages/home.dart';
+import 'package:project2/services/auth/login_or_register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
