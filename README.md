@@ -36,13 +36,15 @@ To run the Food Delivery Application locally on your machine, follow these steps
 
 1. **Flutter SDK**: Make sure you have Flutter installed on your system. If not, you can follow the [official installation guide](https://flutter.dev/docs/get-started/install) provided by Flutter.
 
-2. **Code Editor**: Choose a code editor of your choice. We recommend using Visual Studio Code for a seamless development experience.
+2. **Firebase**: Set up a Firebase project and enable the necessary services (Authentication, Firestore, etc.). Follow the [official Firebase documentation](https://firebase.google.com/docs/flutter/setup) to integrate Firebase into your Flutter project.
+
+3. **Code Editor**: Choose a code editor of your choice. We recommend using Visual Studio Code for a seamless development experience.
 
 ### Steps
 
 1. **Clone the Repository**: 
    ```bash
-   git clone https://github.com/CSC4360Spring2024/Project1.git
+   git clone https://github.com/CSC4360Project2/project2.git
    
 2. **Navigate to the Project Directory**: 
    ```bash
@@ -52,7 +54,11 @@ To run the Food Delivery Application locally on your machine, follow these steps
    ```bash
    flutter pub get
 
-4. **Run the Application**: 
+4. **Setup Firebase**: 
+   ```bash
+   flutterfire configure
+
+5. **Run the Application**: 
    ```bash
    flutter run
 
