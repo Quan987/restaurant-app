@@ -1,6 +1,6 @@
 import 'package:project2/components/receipt.dart';
 import 'package:project2/models/restaurant.dart';
-import 'package:project2/services/database/firestore.dart';
+import 'package:project2/services/database/databaseService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,10 +27,13 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: Text('Delivery in Progress', style: TextStyle(
-          color: Theme.of(context).colorScheme.primary,
-          fontWeight: FontWeight.bold,
-        ),),
+        title: Text(
+          'Delivery in Progress',
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         backgroundColor: Colors.transparent,
         foregroundColor: Theme.of(context).colorScheme.primary,
         centerTitle: true,
@@ -66,11 +69,15 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
             ),
             child: IconButton(
               onPressed: () {},
-              icon: Icon(Icons.person, color: Theme.of(context).colorScheme.primary,),
+              icon: Icon(
+                Icons.person,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
           ),
-
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -90,9 +97,7 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
               ),
             ],
           ),
-
           Spacer(),
-
           Row(
             children: [
               Container(
@@ -102,11 +107,15 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
                 ),
                 child: IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.message, color: Theme.of(context).colorScheme.primary,),
+                  icon: Icon(
+                    Icons.message,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
               ),
-
-              SizedBox(width: 10,),
+              SizedBox(
+                width: 10,
+              ),
               Container(
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.background,
@@ -114,7 +123,10 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
                 ),
                 child: IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.call, color: Theme.of(context).colorScheme.primary,),
+                  icon: Icon(
+                    Icons.call,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
               ),
             ],
