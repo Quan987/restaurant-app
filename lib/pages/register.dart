@@ -1,5 +1,6 @@
 import 'package:project2/components/button.dart';
 import 'package:project2/components/textfield.dart';
+import 'package:project2/components/textformfield.dart';
 import 'package:project2/services/auth/authService.dart';
 import 'package:flutter/material.dart';
 
@@ -173,34 +174,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 key: _registerFormKey,
                 child: Column(
                   children: [
-                    TextFormField(
+                    MyTextFormField(
                       controller: _emailController,
-                      obscureText: false,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Email",
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
-                        }
-                        return null;
-                      },
+                      isObscure: false,
+                      label: "Email",
                     ),
-                    const SizedBox(height: 12),
-                    TextFormField(
+                    const SizedBox(height: 20),
+                    MyTextFormField(
                       controller: _passwordController,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Password",
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
-                        }
-                        return null;
-                      },
+                      isObscure: true,
+                      label: "Password",
                     ),
                   ],
                 ),
