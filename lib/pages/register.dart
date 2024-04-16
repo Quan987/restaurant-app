@@ -1,5 +1,6 @@
 import 'package:project2/components/button.dart';
 import 'package:project2/components/textfield.dart';
+import 'package:project2/components/textformfield.dart';
 import 'package:project2/services/auth/authService.dart';
 import 'package:flutter/material.dart';
 
@@ -162,45 +163,54 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(10.0),
               child: Image.asset(
                 'lib/images/LogoColored.png',
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
               child: Form(
                 key: _registerFormKey,
                 child: Column(
                   children: [
-                    TextFormField(
-                      controller: _emailController,
-                      obscureText: false,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Email",
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
-                        }
-                        return null;
-                      },
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Expanded(
+                          child: MyTextFormField(
+                            controller: _firstNameControler,
+                            isObscure: false,
+                            label: "First Name",
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: MyTextFormField(
+                            controller: _lastNameControler,
+                            isObscure: false,
+                            label: "Last Name",
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 12),
-                    TextFormField(
+                    const SizedBox(height: 16),
+                    MyTextFormField(
+                      controller: _emailController,
+                      isObscure: false,
+                      label: "Email",
+                    ),
+                    const SizedBox(height: 16),
+                    MyTextFormField(
                       controller: _passwordController,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Password",
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
-                        }
-                        return null;
-                      },
+                      isObscure: true,
+                      label: "Password",
+                    ),
+                    const SizedBox(height: 16),
+                    MyTextFormField(
+                      controller: _confirmpasswordController,
+                      isObscure: true,
+                      label: "Confirm Password",
                     ),
                   ],
                 ),
