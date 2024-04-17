@@ -22,18 +22,14 @@ class FirestoreService {
 
   Future<void> dbUserRegister(
       Map<String, String> userinfo, String collection) async {
-    try {
-      CollectionReference db = _db.collection(collection);
-      await db.doc().set({
-        "fname": userinfo["fname"],
-        "lname": userinfo["lname"],
-        "email": userinfo["email"],
-        "password": userinfo["password"],
-        "time": userinfo["timestamp"],
-        "id": userinfo["id"],
-      });
-    } on FirebaseException catch (e) {
-      throw Exception(e.code);
-    }
+    CollectionReference db = _db.collection(collection);
+    await db.doc().set({
+      "fname": userinfo["fname"],
+      "lname": userinfo["lname"],
+      "email": userinfo["email"],
+      "password": userinfo["password"],
+      "time": userinfo["timestamp"],
+      "id": userinfo["id"],
+    });
   }
 }
