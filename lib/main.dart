@@ -1,5 +1,6 @@
 import 'package:project2/firebase_options.dart';
 import 'package:project2/models/restaurant.dart';
+import 'package:project2/pages/login.dart';
 import 'package:project2/pages/register.dart';
 import 'package:project2/services/auth/authGate.dart';
 import 'package:project2/themes/themeProvider.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RegisterPage(),
+      home: LoginPage(),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }

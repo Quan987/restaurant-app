@@ -1,5 +1,6 @@
 import 'package:project2/components/textformfield.dart';
 import 'package:flutter/material.dart';
+import 'package:project2/pages/login.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -165,6 +166,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 'lib/images/LogoColored.png',
               ),
             ),
+            const Text(
+              'Welcome New Customer!',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
               child: Form(
@@ -208,6 +217,29 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: _confirmpasswordController,
                       isObscure: true,
                       label: "Confirm Password",
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Returning User? ",
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                              builder: (context) => const LoginPage(),
+                            ));
+                          },
+                          child: Text(
+                            "Login Here!",
+                            style: TextStyle(
+                                color: Colors.blue[700], fontSize: 14),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
