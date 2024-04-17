@@ -1,8 +1,4 @@
-import 'package:project2/components/button.dart';
-import 'package:project2/components/textfield.dart';
 import 'package:project2/components/textformfield.dart';
-import 'package:project2/components/textformfield.dart';
-import 'package:project2/services/auth/authService.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -198,8 +194,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 16),
                     MyTextFormField(
                       controller: _emailController,
-                      isObscure: false,
-                      label: "Email",
                       isObscure: false,
                       label: "Email",
                     ),
