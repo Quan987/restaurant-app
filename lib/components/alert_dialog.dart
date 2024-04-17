@@ -13,12 +13,13 @@ class MyAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      actionsAlignment: MainAxisAlignment.center,
       title: Text(title),
       content: Text(content),
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text("Ok"),
+          child: Text("Ok".toUpperCase()),
         ),
       ],
     );
