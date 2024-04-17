@@ -2,7 +2,7 @@ import 'package:project2/firebase_options.dart';
 import 'package:project2/models/restaurant.dart';
 import 'package:project2/pages/login.dart';
 import 'package:project2/pages/register.dart';
-import 'package:project2/services/auth/authGate.dart';
+import 'package:project2/services/loginRedirecting.dart';
 import 'package:project2/themes/themeProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
