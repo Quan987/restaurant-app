@@ -8,12 +8,12 @@ class MyButton extends StatelessWidget {
   });
 
   final String title;
-  final Function? onTap;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onTap,
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
