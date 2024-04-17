@@ -24,7 +24,7 @@ class MyButton extends StatelessWidget {
           ),
         ),
       ),
-      child: Text("Login".toUpperCase()),
+      child: Text(title.toUpperCase()),
     );
   }
 }
