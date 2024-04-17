@@ -20,10 +20,10 @@ class FirestoreService {
     return _db.collection(collection);
   }
 
-  Future<void> dbUserRegister(
-      Map<String, String> userinfo, String collection) async {
+  Future<void> dbUserRegister(Map<String, String> userinfo, String collection,
+      String currentUserID) async {
     CollectionReference db = _db.collection(collection);
-    await db.doc().set({
+    await db.doc(currentUserID).set({
       "fname": userinfo["fname"],
       "lname": userinfo["lname"],
       "email": userinfo["email"],
