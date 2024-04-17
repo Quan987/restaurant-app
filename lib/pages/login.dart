@@ -1,6 +1,7 @@
 import 'package:project2/components/button.dart';
 import 'package:project2/components/textfield.dart';
 import 'package:project2/components/textformfield.dart';
+import 'package:project2/pages/register.dart';
 import 'package:project2/services/auth/authService.dart';
 import 'package:flutter/material.dart';
 
@@ -162,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
             const Text(
               'Welcome Back Customer!',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 14,
                 color: Colors.grey,
               ),
             ),
@@ -183,6 +184,29 @@ class _LoginPageState extends State<LoginPage> {
                       controller: _passwordController,
                       isObscure: true,
                       label: "Password",
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "New User? ",
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                              builder: (context) => const RegisterPage(),
+                            ));
+                          },
+                          child: Text(
+                            "Register Here!",
+                            style: TextStyle(
+                                color: Colors.blue[700], fontSize: 14),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
