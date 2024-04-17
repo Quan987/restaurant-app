@@ -199,8 +199,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       controller: _emailController,
                       isObscure: false,
                       label: "Email",
-                      isObscure: false,
-                      label: "Email",
                     ),
                     const SizedBox(height: 16),
                     MyTextFormField(
