@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:project2/components/alert_dialog.dart';
 import 'package:project2/components/button.dart';
 import 'package:project2/components/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +31,44 @@ class _RegisterPageState extends State<RegisterPage> {
     if (_passwordController.text.trim() !=
         _confirmpasswordController.text.trim()) {
       return showDialog(
-        context: context,
-        builder: (context) => 
+          context: context,
+          builder: (context) => const MyAlertDialog(
+                title: "Error!",
+                content:
+                    "Please ensure the password and the confirmed password are matched!",
+              ));
+    } else {
+      // Register user with auth service
+      try {
+        await _auth.authUserRegister(
+          _emailController.text,
+          _passwordController.text,
+        );
+      } on FirebaseException catch (e) {
+        return showDialog(
+          // ignore: use_build_context_synchronously
+          context: context,
+          builder: (context) => MyAlertDialog(
+              title: "Error!",
+              content: "Unable to register, please try again ${e.toString()}"),
+        );
+      }
+
+      // Add user to database
+      Map<String, String> user = {
+        "fname": _firstNameControler.text,
+        "lname": _lastNameControler.text,
+        "email": _emailController.text,
+        "password": _passwordController.text,
+        "time": Timestamp.now() as String,
+        "id": _auth.getCurrentUserUID,
+      };
+      await _db.dbUserRegister(
+        user,
+        "users",
+        _auth.getCurrentUserUID,
       );
-    } else {}
+    }
   }
 
   @override

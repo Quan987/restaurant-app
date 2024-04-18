@@ -30,6 +30,6 @@ class FirestoreService {
       "password": userinfo["password"],
       "time": userinfo["timestamp"],
       "id": userinfo["id"],
-    });
+    }, SetOptions(merge: true));
   }
 }
