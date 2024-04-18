@@ -41,6 +41,11 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  void clearInputField() {
+    _emailController.clear();
+    _passwordController.clear();
+  }
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -111,11 +116,11 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(fontSize: 14),
                         ),
                         InkWell(
-                          onTap: () {
-                            Navigator.of(context)
-                                .pushReplacement(MaterialPageRoute(
+                          onTap: () => {
+                            clearInputField(),
+                            Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const RegisterPage(),
-                            ));
+                            )),
                           },
                           child: Text(
                             "Register Here!",
