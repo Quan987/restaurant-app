@@ -20,7 +20,7 @@ class FirestoreService {
     return _db.collection(collection);
   }
 
-  Future<void> dbUserRegister(Map<String, String> userinfo, String collection,
+  Future<void> dbUserRegister(Map<String, dynamic> userinfo, String collection,
       String currentUserID) async {
     CollectionReference db = _db.collection(collection);
     await db.doc(currentUserID).set({
