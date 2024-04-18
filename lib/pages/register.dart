@@ -38,33 +38,32 @@ class _RegisterPageState extends State<RegisterPage> {
             content:
                 "Please ensure the password and the confirmed password are matched!"),
       );
-    } else {
-      try {
-        // Register user with auth service
-        await _auth.authUserRegister(
-          _emailController.text,
-          _passwordController.text,
-        );
+    }
+    try {
+      // Register user with auth service
+      await _auth.authUserRegister(
+        _emailController.text,
+        _passwordController.text,
+      );
 
-        // Register user to database
-        Map<String, dynamic> user = {
-          "fname": _firstNameControler.text,
-          "lname": _lastNameControler.text,
-          "email": _emailController.text,
-          "password": _passwordController.text,
-          "timestamp": Timestamp.now(),
-          "id": _auth.getCurrentUserUID,
-        };
-        await _db.dbUserRegister(user, "users", _auth.getCurrentUserUID);
-      } on FirebaseException catch (e) {
-        return showDialog(
-          // ignore: use_build_context_synchronously
-          context: context,
-          builder: (context) => MyAlertDialog(
-              title: "Error!",
-              content: "Unable to register, please try again ${e.toString()}"),
-        );
-      }
+      // Register user to database
+      Map<String, dynamic> user = {
+        "fname": _firstNameControler.text,
+        "lname": _lastNameControler.text,
+        "email": _emailController.text,
+        "password": _passwordController.text,
+        "timestamp": Timestamp.now(),
+        "id": _auth.getCurrentUserUID,
+      };
+      await _db.dbUserRegister(user, "users", _auth.getCurrentUserUID);
+    } on FirebaseException catch (e) {
+      return showDialog(
+        // ignore: use_build_context_synchronously
+        context: context,
+        builder: (context) => MyAlertDialog(
+            title: "Error!",
+            content: "Unable to register, please try again ${e.toString()}"),
+      );
     }
   }
 
