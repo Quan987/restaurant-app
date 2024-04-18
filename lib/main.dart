@@ -1,6 +1,5 @@
 import 'package:project2/firebase_options.dart';
 import 'package:project2/models/restaurant.dart';
-import 'package:project2/pages/register.dart';
 import 'package:project2/services/redirecting_service.dart';
 import 'package:project2/themes/themeProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,7 +26,7 @@ class FoodDeliveryApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: const RedirectingService(),
-      home: RegisterPage(),
+      home: const RedirectingService(),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
