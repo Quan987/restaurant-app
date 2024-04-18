@@ -3,7 +3,6 @@ import 'package:project2/components/alert_dialog.dart';
 import 'package:project2/components/button.dart';
 import 'package:project2/components/textformfield.dart';
 import 'package:flutter/material.dart';
-import 'package:project2/pages/login.dart';
 import 'package:project2/services/auth/authService.dart';
 import 'package:project2/services/database/databaseService.dart';
 
@@ -31,19 +30,30 @@ class _RegisterPageState extends State<RegisterPage> {
     if (_passwordController.text.trim() !=
         _confirmpasswordController.text.trim()) {
       return showDialog(
-          context: context,
-          builder: (context) => const MyAlertDialog(
-                title: "Error!",
-                content:
-                    "Please ensure the password and the confirmed password are matched!",
-              ));
+        context: context,
+        builder: (context) => const MyAlertDialog(
+            title: "Error!",
+            content:
+                "Please ensure the password and the confirmed password are matched!"),
+      );
     } else {
-      // Register user with auth service
       try {
+        // Register user with auth service
         await _auth.authUserRegister(
           _emailController.text,
           _passwordController.text,
         );
+
+        // Register user to database
+        Map<String, dynamic> user = {
+          "fname": _firstNameControler.text,
+          "lname": _lastNameControler.text,
+          "email": _emailController.text,
+          "password": _passwordController.text,
+          "timestamp": Timestamp.now(),
+          "id": _auth.getCurrentUserUID,
+        };
+        await _db.dbUserRegister(user, "users", _auth.getCurrentUserUID);
       } on FirebaseException catch (e) {
         return showDialog(
           // ignore: use_build_context_synchronously
@@ -53,21 +63,6 @@ class _RegisterPageState extends State<RegisterPage> {
               content: "Unable to register, please try again ${e.toString()}"),
         );
       }
-
-      // Add user to database
-      Map<String, String> user = {
-        "fname": _firstNameControler.text,
-        "lname": _lastNameControler.text,
-        "email": _emailController.text,
-        "password": _passwordController.text,
-        "time": Timestamp.now() as String,
-        "id": _auth.getCurrentUserUID,
-      };
-      await _db.dbUserRegister(
-        user,
-        "users",
-        _auth.getCurrentUserUID,
-      );
     }
   }
 
@@ -160,10 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context)
-                                .pushReplacement(MaterialPageRoute(
-                              builder: (context) => const LoginPage(),
-                            ));
+                            Navigator.of(context).pop();
                           },
                           child: Text(
                             "Login Here!",
@@ -176,7 +168,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 60),
                     MyButton(
                       title: "Register",
-                      onTap: register,
+                      onTap: () => {
+                        register(),
+                        setState(() {
+                          Navigator.of(context).pop();
+                        }),
+                      },
                     ),
                   ],
                 ),
