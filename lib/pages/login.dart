@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:project2/components/button.dart';
+import 'package:project2/components/loading.dart';
 import 'package:project2/components/textformfield.dart';
 import 'package:project2/pages/register.dart';
 import 'package:project2/services/auth/authService.dart';
@@ -17,6 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final AuthService _auth = AuthService();
+  bool _isLoading = true;
 
   void login() async {
     if (!_loginFormKey.currentState!.validate()) {
@@ -54,6 +56,16 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
+  void initState() {
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -69,79 +81,82 @@ class _LoginPageState extends State<LoginPage> {
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Text(
-              "Login".toUpperCase(),
-              style: const TextStyle(fontSize: 20),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Image.asset(
-                'lib/images/LogoColored.png',
-              ),
-            ),
-            const Text(
-              'Welcome Back Customer!',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: Form(
-                key: _loginFormKey,
-                child: Column(
-                  children: [
-                    MyTextFormField(
-                      controller: _emailController,
-                      isObscure: false,
-                      label: "Email",
+      body: _isLoading
+          ? const LoadingWidget()
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(
+                    "Login".toUpperCase(),
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Image.asset(
+                      'lib/images/LogoColored.png',
                     ),
-                    const SizedBox(height: 16),
-                    MyTextFormField(
-                      controller: _passwordController,
-                      isObscure: true,
-                      label: "Password",
+                  ),
+                  const Text(
+                    'Welcome Back Customer!',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
                     ),
-                    const SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "New User? ",
-                          style: TextStyle(fontSize: 14),
-                        ),
-                        InkWell(
-                          onTap: () => {
-                            clearInputField(),
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const RegisterPage(),
-                            )),
-                          },
-                          child: Text(
-                            "Register Here!",
-                            style: TextStyle(
-                                color: Colors.blue[700], fontSize: 14),
+                  ),
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                    child: Form(
+                      key: _loginFormKey,
+                      child: Column(
+                        children: [
+                          MyTextFormField(
+                            controller: _emailController,
+                            isObscure: false,
+                            label: "Email",
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 16),
+                          MyTextFormField(
+                            controller: _passwordController,
+                            isObscure: true,
+                            label: "Password",
+                          ),
+                          const SizedBox(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "New User? ",
+                                style: TextStyle(fontSize: 14),
+                              ),
+                              InkWell(
+                                onTap: () => {
+                                  clearInputField(),
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const RegisterPage(),
+                                  )),
+                                },
+                                child: Text(
+                                  "Register Here!",
+                                  style: TextStyle(
+                                      color: Colors.blue[700], fontSize: 14),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 60),
+                          MyButton(
+                            title: "Login",
+                            onTap: login,
+                          ),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 60),
-                    MyButton(
-                      title: "Login",
-                      onTap: login,
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:project2/components/loading.dart';
 import 'package:project2/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:project2/pages/login.dart';
@@ -18,7 +19,7 @@ class RedirectingService extends StatelessWidget {
             return const Text("Error");
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
+            return const LoadingWidget();
           }
           if (snapshot.hasData) {
             return const HomePage();
