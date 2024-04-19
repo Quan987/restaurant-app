@@ -4,8 +4,8 @@ import 'package:project2/components/button.dart';
 import 'package:project2/components/loading.dart';
 import 'package:project2/components/textformfield.dart';
 import 'package:flutter/material.dart';
-import 'package:project2/services/auth/authService.dart';
-import 'package:project2/services/database/databaseService.dart';
+import 'package:project2/services/authService.dart';
+import 'package:project2/services/databaseService.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});

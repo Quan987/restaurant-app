@@ -40,6 +40,7 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[600],
+        foregroundColor: Colors.white,
         title: Text("Home".toUpperCase()),
         centerTitle: true,
         elevation: 4,
