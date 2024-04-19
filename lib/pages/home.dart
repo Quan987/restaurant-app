@@ -48,10 +48,6 @@ class _HomePageState extends State<HomePage>
     super.dispose();
   }
 
-  // List<Widget> displayAllFood(List<List<Food>> allFoodList) {
-  //   return allFoodList.map(() {}).toList();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,31 +88,84 @@ class _HomePageState extends State<HomePage>
                 ),
               ],
               body: Consumer<Restaurant>(
-                builder: (context, value, child) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TabBarView(
-                    controller: _tabController,
-                    children: [
-                      ListView.builder(
-                        itemCount: _restaurant.vietMenu.length,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          final food = _restaurant.vietMenu[index];
-                          return Column(
-                            children: [
-                              Text(food.name),
-                              Text(food.description),
-                              Text("${food.price}"),
-                            ],
-                          );
-                        },
-                      ),
-                      Column(children: [Text("ss")]),
-                      Column(children: [Text("Aa")]),
-                      Column(children: [Text("bb")]),
-                      Column(children: [Text("cc")]),
-                    ],
-                  ),
+                builder: (context, value, child) => TabBarView(
+                  controller: _tabController,
+                  children: [
+                    ListView.builder(
+                      itemCount: _restaurant.vietMenu.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        final food = _restaurant.vietMenu[index];
+                        return Column(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.symmetric(
+                                  vertical: 8, horizontal: 16),
+                              // padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.grey,
+                                        spreadRadius: 1,
+                                        blurRadius: 4,
+                                        offset: Offset(0, 4))
+                                  ]),
+                              child: InkWell(
+                                onTap: () {},
+                                borderRadius: BorderRadius.circular(20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20),
+                                      ),
+                                      child: Image.asset(
+                                        food.imagePath,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            food.name,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                          Text(food.description),
+                                          Text(
+                                            "\$${food.price}",
+                                            style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    Column(children: [Text("ss")]),
+                    Column(children: [Text("Aa")]),
+                    Column(children: [Text("bb")]),
+                    Column(children: [Text("cc")]),
+                  ],
                 ),
               ),
             ),
