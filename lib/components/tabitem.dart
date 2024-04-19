@@ -34,7 +34,7 @@ class TabItems extends StatelessWidget {
                   ]),
               child: InkWell(
                 onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => FoodPage(menu: menu)),
+                  MaterialPageRoute(builder: (context) => FoodPage(menu: food)),
                 ),
                 borderRadius: BorderRadius.circular(20),
                 child: Column(
