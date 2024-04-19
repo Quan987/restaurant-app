@@ -1,5 +1,6 @@
 // import 'package:project2/pages/cart.dart';
 // import 'package:flutter/material.dart';
+// import 'package:project2/pages/login.dart';
 
 // class MySilverAppbar extends StatelessWidget {
 //   final Widget child;
@@ -19,7 +20,7 @@
 //             Navigator.push(
 //               context,
 //               MaterialPageRoute(
-//                 builder: (context) => CartPage(),
+//                 builder: (context) => LoginPage(),
 //               ),
 //             );
 //           },

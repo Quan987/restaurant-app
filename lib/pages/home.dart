@@ -1,102 +1,9 @@
-// import 'package:project2/components/currentLocation.dart';
-// import 'package:project2/components/descriptionbox.dart';
-// import 'package:project2/components/drawer.dart';
-// import 'package:project2/components/foodtile.dart';
-// import 'package:project2/components/silverappbar.dart';
-// import 'package:project2/components/tabbar.dart';
-// import 'package:project2/models/food.dart';
-// import 'package:project2/models/restaurant.dart';
-// import 'package:project2/pages/food.dart';
-// import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-
-// class HomePage extends StatefulWidget {
-//   const HomePage({super.key});
-
-//   @override
-//   State<HomePage> createState() => _HomePageState();
-// }
-
-// class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
-
-//   late TabController tabController;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     tabController = TabController(length: FoodCategory.values.length, vsync: this);
-//   }
-
-//   @override
-//   void dispose() {
-//     tabController.dispose();
-//     super.dispose();
-//   }
-
-//   List<Food> _filterMenuByCategory(FoodCategory category, List<Food> fullMenu) {
-//     return fullMenu.where((food) => food.category == category).toList();
-//   }
-
-//   List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
-//     return FoodCategory.values.map((category) {
-//       List<Food> categoryMenu = _filterMenuByCategory(category, fullMenu);
-
-//       return ListView.builder(
-//         itemCount: categoryMenu.length,
-//         physics: NeverScrollableScrollPhysics(),
-//         padding: EdgeInsets.zero,
-//         itemBuilder: (context, index) {
-//           final food = categoryMenu[index];
-//           return MyFoodTile(
-//             food: food,
-//             onTap: (){
-//               Navigator.push(context, MaterialPageRoute(builder: (context) => FoodPage(food: food)));
-//             }
-//           );
-//         }
-//       );
-//     }).toList();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       drawer: MyDrawer(),
-//       body: NestedScrollView(
-//         headerSliverBuilder: (context, innerBoxIsScrolled) =>
-//         [
-//           MySilverAppbar(
-//             title: MyTabBar(tabController: tabController),
-//             child: Column(
-//               mainAxisAlignment: MainAxisAlignment.end,
-//               children: [
-//                 Divider(
-//                   indent: 25,
-//                   endIndent: 25,
-//                   color: Theme.of(context).colorScheme.tertiary,
-//                 ),
-
-//                 MyCurrentLocation(),
-
-//                 MyDescrptionBox(),
-//               ],
-//             ),
-//           ),
-//         ],
-//         body: Consumer<Restaurant>(
-//           builder: (context, restaurant, child) => TabBarView(
-//           controller: tabController,
-//           children: getFoodInThisCategory(restaurant.menu),
-//         ),
-//         )
-//       ),
-//     );
-//   }
-// }
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:project2/components/loading.dart';
+import 'package:project2/components/tabitem.dart';
+import 'package:project2/models/restaurant.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -105,8 +12,11 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   bool _isLoading = true;
+  late TabController _tabController;
+  final Restaurant _restaurant = Restaurant();
 
   @override
   void initState() {
@@ -116,13 +26,25 @@ class _HomePageState extends State<HomePage> {
       });
     });
     super.initState();
+    _tabController = TabController(length: _restaurant.foodCount, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue[600],
+        foregroundColor: Colors.white,
         title: Text("Home".toUpperCase()),
+        centerTitle: true,
+        elevation: 4,
+        shadowColor: Colors.grey,
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
@@ -134,10 +56,52 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _isLoading
           ? const LoadingWidget()
-          : const Column(
-              children: [
-                Text("Text"),
+          : NestedScrollView(
+              headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                SliverAppBar(
+                  title: Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Text("Restaurant Menu".toUpperCase()),
+                  ),
+                  centerTitle: true,
+                  pinned: true,
+                  floating: true,
+                  forceElevated: innerBoxIsScrolled,
+                  actions: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.shopping_cart),
+                      ),
+                    ),
+                  ],
+                  bottom: TabBar(
+                    padding: EdgeInsets.zero,
+                    controller: _tabController,
+                    labelPadding: const EdgeInsets.symmetric(horizontal: 14),
+                    isScrollable: true,
+                    tabAlignment: TabAlignment.center,
+                    labelColor: Colors.blue[600],
+                    indicatorColor: Colors.blue[600],
+                    tabs: _restaurant.allFoodKey
+                        .map((food) => Tab(child: Text(food.toUpperCase())))
+                        .toList(),
+                  ),
+                ),
               ],
+              body: Consumer<Restaurant>(
+                builder: (context, value, child) => TabBarView(
+                  controller: _tabController,
+                  children: [
+                    TabItems(menu: _restaurant.vietMenu),
+                    TabItems(menu: _restaurant.koreanMenu),
+                    TabItems(menu: _restaurant.spanishMenu),
+                    TabItems(menu: _restaurant.italianMenu),
+                    TabItems(menu: _restaurant.americanMenu),
+                  ],
+                ),
+              ),
             ),
     );
   }
