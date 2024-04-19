@@ -1,196 +1,157 @@
-// import 'package:project2/components/button.dart';
-// import 'package:project2/models/food.dart';
-// import 'package:project2/models/restaurant.dart';
-// import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
+import 'package:project2/components/button.dart';
+import 'package:project2/models/extra_item.dart';
+import 'package:project2/models/food.dart';
 
-// class FoodPage extends StatefulWidget {
-//   final Food food;
-//   final Map<Addon, bool> selectedAddons = {};
+class FoodPage extends StatefulWidget {
+  const FoodPage({
+    super.key,
+    required this.menu,
+  });
 
-//   FoodPage({Key? key, required this.food}) : super(key: key) {
-//     for (Addon addon in food.availableAddon) {
-//       selectedAddons[addon] = false;
-//     }
-//   }
+  final Food menu;
 
-//   @override
-//   State<FoodPage> createState() => _FoodPageState();
-// }
+  @override
+  State<FoodPage> createState() => _FoodPageState();
+}
 
-// class _FoodPageState extends State<FoodPage> {
-//   void addToCart(Food food, Map<Addon, bool> selectedAddons) {
-//     Navigator.pop(context);
-//     List<Addon> currentlySelectedAddons = [];
-//     for (Addon addon in widget.food.availableAddon) {
-//       if (widget.selectedAddons[addon] == true) {
-//         currentlySelectedAddons.add(addon);
-//       }
-//     }
+class _FoodPageState extends State<FoodPage> {
+  final Map<ExtraItem, bool> isSelected = {};
 
-//     context.read<Restaurant>().addToCart(food, currentlySelectedAddons);
-//   }
+  void initiateExtraItemSelect() {
+    for (ExtraItem item in widget.menu.extra) {
+      isSelected[item] = false;
+    }
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.grey[100],
-//       body: Stack(
-//         children: [
-//           Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Container(
-//                 height: 250,
-//                 decoration: BoxDecoration(
-//                   borderRadius: BorderRadius.only(
-//                     bottomLeft: Radius.circular(30),
-//                     bottomRight: Radius.circular(30),
-//                   ),
-//                   image: DecorationImage(
-//                     image: AssetImage(widget.food.imagePath),
-//                     fit: BoxFit.cover,
-//                   ),
-//                 ),
-//               ),
-//               Expanded(
-//                 child: SingleChildScrollView(
-//                   child: Padding(
-//                     padding: const EdgeInsets.only(
-//                         bottom: 25.0, right: 25, left: 25, top: 20),
-//                     child: Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-//                         Text(
-//                           widget.food.name,
-//                           style: TextStyle(
-//                             fontWeight: FontWeight.bold,
-//                             fontSize: 24,
-//                             color: Theme.of(context).colorScheme.primary,
-//                           ),
-//                         ),
-//                         SizedBox(height: 5),
-//                         Text(
-//                           "\$" + widget.food.price.toString(),
-//                           style: TextStyle(
-//                             fontSize: 18,
-//                             color: Colors.green,
-//                             fontWeight: FontWeight.bold,
-//                           ),
-//                         ),
-//                         SizedBox(height: 10),
-//                         Text(
-//                           widget.food.description,
-//                           style: TextStyle(
-//                             fontSize: 16,
-//                             color: Theme.of(context).colorScheme.inversePrimary,
-//                           ),
-//                         ),
-//                         SizedBox(height: 20),
-//                         Container(
-//                           decoration: BoxDecoration(
-//                             color: Colors.white,
-//                             borderRadius: BorderRadius.circular(10),
-//                             boxShadow: [
-//                               BoxShadow(
-//                                 color: Colors.grey.withOpacity(0.3),
-//                                 spreadRadius: 2,
-//                                 blurRadius: 5,
-//                                 offset: Offset(0, 3),
-//                               ),
-//                             ],
-//                           ),
-//                           padding: EdgeInsets.all(20),
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-//                               Text(
-//                                 'Add-ons',
-//                                 style: TextStyle(
-//                                   color: Theme.of(context).colorScheme.primary,
-//                                   fontWeight: FontWeight.bold,
-//                                   fontSize: 18,
-//                                 ),
-//                               ),
-//                               SizedBox(height: 10),
-//                               ListView.builder(
-//                                 padding: EdgeInsets.zero,
-//                                 shrinkWrap: true,
-//                                 physics: NeverScrollableScrollPhysics(),
-//                                 itemCount: widget.food.availableAddon.length,
-//                                 itemBuilder: (context, index) {
-//                                   Addon addon =
-//                                       widget.food.availableAddon[index];
-//                                   return ListTile(
-//                                     leading: Checkbox(
-//                                       value: widget.selectedAddons[addon],
-//                                       onChanged: (bool? value) {
-//                                         setState(() {
-//                                           widget.selectedAddons[addon] = value!;
-//                                         });
-//                                       },
-//                                       activeColor:
-//                                           Theme.of(context).colorScheme.primary,
-//                                     ),
-//                                     title: Text(
-//                                       addon.name,
-//                                       style: TextStyle(
-//                                         fontWeight: FontWeight.bold,
-//                                         color: Theme.of(context)
-//                                             .colorScheme
-//                                             .primary,
-//                                       ),
-//                                     ),
-//                                     trailing: Text(
-//                                       "\$" + addon.price.toString(),
-//                                       style: TextStyle(
-//                                         color: Colors.grey[600],
-//                                         fontWeight: FontWeight.bold,
-//                                       ),
-//                                     ),
-//                                   );
-//                                 },
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//           Positioned(
-//             top: 40,
-//             left: 10,
-//             child: CircleAvatar(
-//               backgroundColor: Colors.white,
-//               child: IconButton(
-//                 icon: Icon(
-//                   Icons.arrow_back,
-//                   color: Theme.of(context).colorScheme.primary,
-//                 ),
-//                 onPressed: () {
-//                   Navigator.of(context).pop();
-//                 },
-//               ),
-//             ),
-//           ),
-//           Positioned(
-//             bottom: 0,
-//             left: 0,
-//             right: 0,
-//             child: Padding(
-//               padding: const EdgeInsets.only(bottom: 25.0, left: 25, right: 25),
-//               child: MyButton(
-//                 text: 'Add To Cart',
-//                 onTap: () => addToCart(widget.food, widget.selectedAddons),
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
+  @override
+  void initState() {
+    super.initState();
+    initiateExtraItemSelect();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 400,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Colors.grey,
+                          spreadRadius: 2,
+                          blurRadius: 4,
+                          offset: Offset(0, 2)),
+                    ],
+                  ),
+                  child: Image.asset(
+                    widget.menu.imagePath,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Positioned(
+                  top: 50,
+                  left: 0,
+                  child: IconButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    // iconSize: 40,
+                    icon: const Icon(
+                      Icons.arrow_circle_left,
+                      size: 40,
+                    ),
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Container(
+              decoration: BoxDecoration(color: Colors.grey[100]),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Column(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.menu.name,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 28,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4),
+                        child: Text(
+                          widget.menu.description,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ),
+                      const Divider(height: 40),
+                      Text(
+                        "Extras".toUpperCase(),
+                        style: TextStyle(
+                            color: Colors.grey[700],
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 10),
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(8)),
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: widget.menu.extra.length,
+                          itemBuilder: (context, index) {
+                            var extraItem = widget.menu.extra[index];
+                            return CheckboxListTile(
+                              checkColor: Colors.white,
+                              activeColor: Colors.blue[600],
+                              value: isSelected[extraItem],
+                              onChanged: (value) {
+                                setState(() {
+                                  isSelected[extraItem] = value!;
+                                });
+                              },
+                              title: Text(
+                                extraItem.name,
+                                style: TextStyle(color: Colors.grey[700]),
+                              ),
+                              subtitle: Text(
+                                "\$${extraItem.price}",
+                                style: TextStyle(color: Colors.grey[700]),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 40),
+                  MyButton(
+                    title: "Add to cart",
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

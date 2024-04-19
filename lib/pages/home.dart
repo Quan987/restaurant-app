@@ -55,50 +55,50 @@ class _HomePageState extends State<HomePage>
       ),
       body: _isLoading
           ? const LoadingWidget()
-          : Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: NestedScrollView(
-                headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                  SliverAppBar(
-                    title: Text("Restaurant Menu".toUpperCase()),
-                    centerTitle: true,
-                    pinned: true,
-                    floating: true,
-                    forceElevated: innerBoxIsScrolled,
-                    actions: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.shopping_cart),
-                        ),
+          : NestedScrollView(
+              headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                SliverAppBar(
+                  title: Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Text("Restaurant Menu".toUpperCase()),
+                  ),
+                  centerTitle: true,
+                  pinned: true,
+                  floating: true,
+                  forceElevated: innerBoxIsScrolled,
+                  actions: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.shopping_cart),
                       ),
-                    ],
-                    bottom: TabBar(
-                      padding: EdgeInsets.zero,
-                      controller: _tabController,
-                      labelPadding: const EdgeInsets.symmetric(horizontal: 14),
-                      isScrollable: true,
-                      tabAlignment: TabAlignment.center,
-                      labelColor: Colors.blue[600],
-                      indicatorColor: Colors.blue[600],
-                      tabs: _restaurant.allFoodKey
-                          .map((food) => Tab(child: Text(food.toUpperCase())))
-                          .toList(),
                     ),
-                  ),
-                ],
-                body: Consumer<Restaurant>(
-                  builder: (context, value, child) => TabBarView(
+                  ],
+                  bottom: TabBar(
+                    padding: EdgeInsets.zero,
                     controller: _tabController,
-                    children: [
-                      TabItems(menu: _restaurant.vietMenu),
-                      TabItems(menu: _restaurant.koreanMenu),
-                      TabItems(menu: _restaurant.spanishMenu),
-                      TabItems(menu: _restaurant.italianMenu),
-                      TabItems(menu: _restaurant.americanMenu),
-                    ],
+                    labelPadding: const EdgeInsets.symmetric(horizontal: 14),
+                    isScrollable: true,
+                    tabAlignment: TabAlignment.center,
+                    labelColor: Colors.blue[600],
+                    indicatorColor: Colors.blue[600],
+                    tabs: _restaurant.allFoodKey
+                        .map((food) => Tab(child: Text(food.toUpperCase())))
+                        .toList(),
                   ),
+                ),
+              ],
+              body: Consumer<Restaurant>(
+                builder: (context, value, child) => TabBarView(
+                  controller: _tabController,
+                  children: [
+                    TabItems(menu: _restaurant.vietMenu),
+                    TabItems(menu: _restaurant.koreanMenu),
+                    TabItems(menu: _restaurant.spanishMenu),
+                    TabItems(menu: _restaurant.italianMenu),
+                    TabItems(menu: _restaurant.americanMenu),
+                  ],
                 ),
               ),
             ),
