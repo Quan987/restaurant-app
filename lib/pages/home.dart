@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:project2/components/bottomnav.dart';
 import 'package:project2/components/loading.dart';
 import 'package:project2/components/tabitem.dart';
 import 'package:project2/models/restaurant.dart';
@@ -14,9 +14,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  bool _isLoading = true;
   late TabController _tabController;
   final Restaurant _restaurant = Restaurant();
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -41,18 +41,11 @@ class _HomePageState extends State<HomePage>
       appBar: AppBar(
         backgroundColor: Colors.blue[600],
         foregroundColor: Colors.white,
+        leading: const Icon(Icons.people),
         title: Text("Home".toUpperCase()),
         centerTitle: true,
         elevation: 4,
         shadowColor: Colors.grey,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-            },
-          ),
-        ],
       ),
       body: _isLoading
           ? const LoadingWidget()
@@ -103,6 +96,7 @@ class _HomePageState extends State<HomePage>
                 ),
               ),
             ),
+      bottomNavigationBar: const MyBottomNavBar(currentIndex: 0),
     );
   }
 }
