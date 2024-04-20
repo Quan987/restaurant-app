@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 
 class MySettingWidget extends StatelessWidget {
-  const MySettingWidget(
-      {super.key,
-      required this.title,
-      required this.subtitle,
-      required this.circle});
+  const MySettingWidget({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.circle,
+    required this.onTap,
+  });
 
   final String title;
   final String subtitle;
   final Color circle;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(20),
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
