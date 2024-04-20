@@ -47,14 +47,6 @@ class _HomePageState extends State<HomePage>
         centerTitle: true,
         elevation: 4,
         shadowColor: Colors.grey,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-            },
-          ),
-        ],
       ),
       body: _isLoading
           ? const LoadingWidget()
