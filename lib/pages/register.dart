@@ -55,7 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
         "timestamp": Timestamp.now(),
         "id": _auth.getCurrentUserUID,
       };
-      await _db.dbUserRegister(user, "users", _auth.getCurrentUserUID);
+      await _db.dbUserRegister(user, _auth.getCurrentUserUID);
     } on FirebaseException catch (e) {
       return showDialog(
         // ignore: use_build_context_synchronously
