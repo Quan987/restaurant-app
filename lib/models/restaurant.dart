@@ -3,45 +3,6 @@ import 'package:project2/models/cartitem.dart';
 import 'package:flutter/material.dart';
 
 class Restaurant extends ChangeNotifier {
-
-  final List<CartItem> _cart = [];
-  List<Food> get menu => _menu;
-  List<CartItem> get cart => _cart;
-
-  void addToCart(Food food) {
-    CartItem? cartIem = _cart.firstWhereOrNull((item) {
-      bool isSameFood = item.food == food;
-      return isSameFood;
-    });
-
-    if (cartIem != null) {
-      cartIem.quantity++;
-    } else {
-      _cart.add(
-        CartItem(food: food),
-      );
-    }
-    notifyListeners();
-  }
-
-  void removeFromCart(CartItem cartItem) {
-      int cartIndex = _cart.indexOf(cartItem);
-
-      if (cartIndex != -1) {
-        if (_cart[cartIndex].quantity > 1) {
-          _cart[cartIndex].quantity--;
-        } else {
-          _cart.removeAt(cartIndex);
-        }
-      }
-      notifyListeners();
-    }
-
-  void clearCart() {
-    _cart.clear();
-    notifyListeners();
-  }
-
   // Restaurant
   Map<String, dynamic> allFood = {
     "viet": [
@@ -230,19 +191,24 @@ class Restaurant extends ChangeNotifier {
       ),
     ],
   };
-// Address
-  final String address = "123 Flint Drive, Atlanta, Georgia 30303";
 
-// Get individual food menu
+  // Address
+  final String address = "123 Flint Drive, Atlanta, Georgia 30303";
+  // Cart Items
+  final List<CartItem> _cart = [];
+  List<CartItem> get cart => _cart;
+
+  // Get individual food menu
   List<Food> get vietMenu => allFood["viet"];
   List<Food> get koreanMenu => allFood["korean"];
   List<Food> get spanishMenu => allFood["spanish"];
   List<Food> get italianMenu => allFood["italian"];
   List<Food> get americanMenu => allFood["american"];
 
+  // Get address
   String get currentAddress => address;
 
-// Food method
+  // Food method
   int get foodCount => allFood.length;
   List<String> get allFoodKey {
     return allFood.keys.toList();
@@ -250,6 +216,43 @@ class Restaurant extends ChangeNotifier {
 
   List<List<Food>> get allFoodItems {
     return allFood.values.map((e) => e as List<Food>).toList();
+  }
+
+  void addToCart(Food food) {
+    CartItem? cartItem;
+    try {
+      cartItem = _cart.firstWhere((item) => item.food == food);
+    } catch (e) {
+      cartItem = null;
+    }
+
+    if (cartItem != null) {
+      cartItem.quantity++;
+    } else {
+      _cart.add(
+        CartItem(food: food),
+      );
+    }
+    notifyListeners();
+  }
+
+
+  void removeFromCart(CartItem cartItem) {
+    int cartIndex = _cart.indexOf(cartItem);
+
+    if (cartIndex != -1) {
+      if (_cart[cartIndex].quantity > 1) {
+        _cart[cartIndex].quantity--;
+      } else {
+        _cart.removeAt(cartIndex);
+      }
+    }
+    notifyListeners();
+  }
+
+  void clearCart() {
+    _cart.clear();
+    notifyListeners();
   }
 }
 
@@ -267,10 +270,10 @@ class Restaurant extends ChangeNotifier {
   //     bool isSameFood = item.food == food;
   //     bool isSameAddons =
   //         ListEquality().equals(item.selectedAddons, selectedAddons);
-
+  //
   //     return isSameFood && isSameAddons;
   //   });
-
+  //
   //   if (cartIem != null) {
   //     cartIem.quantity++;
   //   } else {
