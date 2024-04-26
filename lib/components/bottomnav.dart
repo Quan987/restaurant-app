@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project2/pages/home.dart';
 import 'package:project2/pages/setting.dart';
 import 'package:project2/pages/track.dart';
+import 'package:project2/pages/cart.dart';
 
 class MyBottomNavBar extends StatelessWidget {
   const MyBottomNavBar({
@@ -40,6 +41,13 @@ class MyBottomNavBar extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const SettingPage()),
           );
         }
+
+        if (index == 3) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const CartPage()),
+          );
+        }
       },
       items: const [
         BottomNavigationBarItem(
@@ -53,6 +61,10 @@ class MyBottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.settings),
           label: "Setting",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_cart),
+          label: 'Home',
         ),
       ],
     );

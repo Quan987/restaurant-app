@@ -41,7 +41,6 @@ class _HomePageState extends State<HomePage>
       appBar: AppBar(
         backgroundColor: Colors.blue[600],
         foregroundColor: Colors.white,
-        leading: const Icon(Icons.people),
         title: Text("Home".toUpperCase()),
         centerTitle: true,
         elevation: 4,
@@ -60,15 +59,6 @@ class _HomePageState extends State<HomePage>
                   pinned: true,
                   floating: true,
                   forceElevated: innerBoxIsScrolled,
-                  actions: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.shopping_cart),
-                      ),
-                    ),
-                  ],
                   bottom: TabBar(
                     padding: EdgeInsets.zero,
                     controller: _tabController,
