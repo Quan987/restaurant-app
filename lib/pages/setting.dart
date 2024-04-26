@@ -142,15 +142,6 @@ class _SettingPageState extends State<SettingPage> {
                                 );
                               },
                             ),
-                            const SizedBox(height: 20),
-
-                            // Dark Mode
-                            MySettingWidget(
-                              title: "Dark Mode",
-                              subtitle: "Change to Dark Mode",
-                              circle: Colors.black,
-                              onTap: () {},
-                            ),
                             const SizedBox(height: 140),
                             Padding(
                               padding: const EdgeInsets.symmetric(
