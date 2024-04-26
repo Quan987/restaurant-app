@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project2/components/button.dart';
 import 'package:project2/components/loading.dart';
-import 'package:project2/models/extra_item.dart';
 import 'package:project2/models/food.dart';
 
 class FoodPage extends StatefulWidget {
@@ -18,13 +17,6 @@ class FoodPage extends StatefulWidget {
 
 class _FoodPageState extends State<FoodPage> {
   bool _isLoading = true;
-  final Map<ExtraItem, bool> isSelected = {};
-
-  void initiateExtraItemSelect() {
-    for (ExtraItem item in widget.menu.extra) {
-      isSelected[item] = false;
-    }
-  }
 
   @override
   void initState() {
@@ -34,7 +26,6 @@ class _FoodPageState extends State<FoodPage> {
       });
     });
     super.initState();
-    initiateExtraItemSelect();
   }
 
   @override
@@ -125,27 +116,7 @@ class _FoodPageState extends State<FoodPage> {
                                 padding: EdgeInsets.zero,
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: widget.menu.extra.length,
                                 itemBuilder: (context, index) {
-                                  var extraItem = widget.menu.extra[index];
-                                  return CheckboxListTile(
-                                    checkColor: Colors.white,
-                                    activeColor: Colors.blue[600],
-                                    value: isSelected[extraItem],
-                                    onChanged: (value) {
-                                      setState(() {
-                                        isSelected[extraItem] = value!;
-                                      });
-                                    },
-                                    title: Text(
-                                      extraItem.name,
-                                      style: TextStyle(color: Colors.grey[700]),
-                                    ),
-                                    subtitle: Text(
-                                      "\$${extraItem.price}",
-                                      style: TextStyle(color: Colors.grey[700]),
-                                    ),
-                                  );
                                 },
                               ),
                             ),
