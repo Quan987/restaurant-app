@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:project2/components/button.dart';
 import 'package:project2/components/loading.dart';
 import 'package:project2/models/food.dart';
-import 'package:project2/models/restaurant.dart';
+import 'package:project2/methods/food.dart';
 
 class FoodPage extends StatefulWidget {
   const FoodPage({
@@ -33,7 +33,7 @@ class _FoodPageState extends State<FoodPage> {
   @override
   Future<void> addToCart(Food food) async {
     Navigator.pop(context);
-    context.read<Restaurant>().addToCart(food);
+    context.read<FoodMethods>().addToCart(food);
   }
 
   @override

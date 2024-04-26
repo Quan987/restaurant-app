@@ -1,6 +1,6 @@
 import 'package:project2/components/quantityselector.dart';
 import 'package:project2/models/cartitem.dart';
-import 'package:project2/models/restaurant.dart';
+import 'package:project2/methods/food.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +11,7 @@ class MyCartTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<Restaurant>(
+    return Consumer<FoodMethods>(
       builder: (context, restaurant, child) => Container(
         decoration: BoxDecoration(
           color: Colors.white,

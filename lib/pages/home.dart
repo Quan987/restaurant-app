@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project2/components/bottomnav.dart';
 import 'package:project2/components/loading.dart';
 import 'package:project2/components/tabitem.dart';
-import 'package:project2/models/restaurant.dart';
+import 'package:project2/methods/food.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final Restaurant _restaurant = Restaurant();
+  final FoodMethods _restaurant = FoodMethods();
   bool _isLoading = true;
 
   @override
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
               ],
-              body: Consumer<Restaurant>(
+              body: Consumer<FoodMethods>(
                 builder: (context, value, child) => TabBarView(
                   controller: _tabController,
                   children: [
