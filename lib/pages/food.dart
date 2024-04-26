@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:project2/components/button.dart';
 import 'package:project2/components/loading.dart';
 import 'package:project2/models/food.dart';
+import 'package:project2/models/restaurant.dart';
 
 class FoodPage extends StatefulWidget {
   const FoodPage({
@@ -26,6 +28,12 @@ class _FoodPageState extends State<FoodPage> {
       });
     });
     super.initState();
+  }
+
+  @override
+  Future<void> addToCart(Food food) async {
+    Navigator.pop(context);
+    context.read<Restaurant>().addToCart(food);
   }
 
   @override
@@ -99,14 +107,6 @@ class _FoodPageState extends State<FoodPage> {
                                 ),
                               ),
                             ),
-                            const Divider(height: 40),
-                            Text(
-                              "Extras".toUpperCase(),
-                              style: TextStyle(
-                                  color: Colors.grey[700],
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
                             const SizedBox(height: 10),
                             Container(
                               decoration: BoxDecoration(
@@ -125,7 +125,7 @@ class _FoodPageState extends State<FoodPage> {
                         const SizedBox(height: 40),
                         MyButton(
                           title: "Add to cart",
-                          onTap: () {},
+                          onTap: () => addToCart(widget.menu),
                         ),
                       ],
                     ),
