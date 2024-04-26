@@ -1,4 +1,4 @@
-import 'package:project2/models/restaurant.dart';
+import 'package:project2/methods/food.dart';
 import 'package:project2/components/bottomnav.dart';
 import 'package:project2/components/carttile.dart';
 import 'package:project2/components/loading.dart';
@@ -28,7 +28,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
 
-    return Consumer<Restaurant>(builder: (context, restaurant, child) {
+    return Consumer<FoodMethods>(builder: (context, restaurant, child) {
       final userCart = restaurant.cart;
 
       return Scaffold(

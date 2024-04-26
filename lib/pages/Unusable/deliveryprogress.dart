@@ -3,25 +3,25 @@
 // import 'package:project2/services/database/databaseService.dart';
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
-
+//
 // class DeliveryProgressPage extends StatefulWidget {
 //   const DeliveryProgressPage({super.key});
-
+//
 //   @override
 //   State<DeliveryProgressPage> createState() => _DeliveryProgressPageState();
 // }
-
+//
 // class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
 //   FirestoreService db = FirestoreService();
-
+//
 //   @override
 //   void initState() {
 //     super.initState();
-
+//
 //     String receipt = context.read<Restaurant>().displayCartReceipt();
 //     db.saveOrderToDatabase(receipt);
 //   }
-
+//
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
@@ -48,7 +48,7 @@
 //       ),
 //     );
 //   }
-
+//
 //   Widget _buildBottomNavBar(BuildContext context) {
 //     return Container(
 //       height: 100,
