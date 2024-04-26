@@ -1,7 +1,6 @@
-import 'package:project2/components/button.dart';
 import 'package:project2/models/restaurant.dart';
-import 'package:project2/pages/home.dart';
 import 'package:project2/components/bottomnav.dart';
+import 'package:project2/components/carttile.dart';
 import 'package:project2/components/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,19 +27,18 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Consumer<Restaurant>(builder: (context, restaurant, child) {
       final userCart = restaurant.cart;
 
       return Scaffold(
         appBar: AppBar(
-          title: Text('Cart',
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.bold,
-            ),),
-          backgroundColor: Colors.transparent,
-          foregroundColor: Theme.of(context).colorScheme.primary,
+          backgroundColor: Colors.blue[600],
+          foregroundColor: Colors.white,
+          title: Text("Cart".toUpperCase()),
           centerTitle: true,
+          elevation: 4,
+          shadowColor: Colors.grey,
           actions: [
             IconButton(
               onPressed: () {
@@ -70,7 +68,9 @@ class _CartPageState extends State<CartPage> {
             ),
           ],
         ),
-        body: Column(
+        body: _isLoading
+            ? const LoadingWidget()
+            : Column(
           children: [
             Expanded(
               child: Column(
@@ -91,8 +91,7 @@ class _CartPageState extends State<CartPage> {
                         itemCount: userCart.length,
                         itemBuilder: (context, index) {
                           final cartItem = userCart[index];
-                          // return MyCartTile(cartItem: cartItem);
-                          return HomePage();
+                          return MyCartTile(cartItem: cartItem);
                         }),
                   ),
                 ],
@@ -100,11 +99,9 @@ class _CartPageState extends State<CartPage> {
             ),
           ],
         ),
-        bottomNavigationBar: const MyBottomNavBar(currentIndex: 3),
+        bottomNavigationBar: const MyBottomNavBar(currentIndex: 2),
       );
+
     });
   }
 }
-
-
-

@@ -38,14 +38,14 @@ class MyBottomNavBar extends StatelessWidget {
         if (index == 2) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const SettingPage()),
+            MaterialPageRoute(builder: (context) => const CartPage()),
           );
         }
 
         if (index == 3) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const CartPage()),
+            MaterialPageRoute(builder: (context) => const SettingPage()),
           );
         }
       },
@@ -59,12 +59,12 @@ class MyBottomNavBar extends StatelessWidget {
           label: "Track",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: "Setting",
+          icon: Icon(Icons.shopping_cart),
+          label: 'Cart',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart),
-          label: 'Home',
+          icon: Icon(Icons.settings),
+          label: "Setting",
         ),
       ],
     );
