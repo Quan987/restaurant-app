@@ -1,6 +1,3 @@
-import 'package:project2/models/cartitem.dart';
-import 'package:project2/models/food.dart';
-import 'package:project2/models/restaurant.dart';
 import 'package:flutter/material.dart';
 
 class AddressMethods extends ChangeNotifier {
