@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project2/components/bottomnav.dart';
 import 'package:project2/components/loading.dart';
 import 'package:project2/components/tabitem.dart';
-import 'package:project2/methods/food.dart';
+import 'package:project2/providers/food.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:project2/firebase_options.dart';
-import 'package:project2/models/restaurant.dart';
+import 'package:project2/providers/food.dart';
 import 'package:project2/services/redirecting_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (context) => Restaurant()),
+      ChangeNotifierProvider(create: (context) => FoodMethods()),
     ],
     child: const FoodDeliveryApp(),
   ));
@@ -23,7 +23,6 @@ class FoodDeliveryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: const RedirectingService(),
       home: const RedirectingService()
     );
   }

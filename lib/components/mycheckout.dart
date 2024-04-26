@@ -2,8 +2,8 @@ import 'package:project2/providers/food.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class MyReceipt extends StatelessWidget {
-  const MyReceipt({Key? key});
+class MyCheckout extends StatelessWidget {
+  const MyCheckout({Key? key});
 
   @override
   Widget build(BuildContext context) {
