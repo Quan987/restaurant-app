@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:project2/components/button.dart';
 import 'package:project2/components/loading.dart';
 import 'package:project2/models/food.dart';
-import 'package:project2/methods/food.dart';
+import 'package:project2/providers/food.dart';
 
 class FoodPage extends StatefulWidget {
   const FoodPage({

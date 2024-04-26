@@ -1,9 +1,11 @@
-import 'package:project2/methods/food.dart';
+import 'package:project2/providers/food.dart';
 import 'package:project2/components/bottomnav.dart';
 import 'package:project2/components/carttile.dart';
 import 'package:project2/components/loading.dart';
 import 'package:flutter/material.dart';
+import 'package:project2/pages/checkout.dart';
 import 'package:provider/provider.dart';
+import 'package:project2/components/button.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -93,6 +95,18 @@ class _CartPageState extends State<CartPage> {
                           final cartItem = userCart[index];
                           return MyCartTile(cartItem: cartItem);
                         }),
+                  ),
+                  const SizedBox(height: 40),
+                  MyButton(
+                    title: "Checkout",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CheckoutPage(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
