@@ -5,6 +5,9 @@ import 'package:intl/intl.dart';
 
 class ReceiptMethods extends ChangeNotifier {
   final List<CartItem> _cart = [];
+  final receipt = StringBuffer();
+  final AddressMethods _addressMethods;
+  ReceiptMethods(this._addressMethods);
 
   String displayCartReceipt() {
     final AddressMethods _addressMethods = AddressMethods();

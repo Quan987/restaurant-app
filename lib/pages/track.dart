@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:project2/services/databaseService.dart';
+import 'package:project2/services/orderService.dart';
 import 'package:project2/components/bottomnav.dart';
 import 'package:project2/components/loading.dart';
 import 'package:project2/methods/address.dart';
+import 'package:project2/methods/receipt.dart';
 import 'package:project2/components/receipt.dart';
 
 class TrackPage extends StatefulWidget {
@@ -26,7 +26,11 @@ class _TrackPageState extends State<TrackPage> {
     });
     super.initState();
 
-    String receipt = context.read<ReceiptMethods>().displayCartReceipt();
+    final addressMethods = AddressMethods();
+
+    final receiptMethods = ReceiptMethods(addressMethods);
+
+    String receipt = receiptMethods.displayCartReceipt();
     db.saveOrderToDatabase(receipt);
   }
 
@@ -49,6 +53,93 @@ class _TrackPageState extends State<TrackPage> {
             ],
             ),
       bottomNavigationBar: const MyBottomNavBar(currentIndex: 1),
+    );
+  }
+
+  Widget buildBottomNavBar(BuildContext context) {
+    return Container(
+      height: 100,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.secondary,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(40),
+          topRight: Radius.circular(40),
+        ),
+      ),
+      padding: EdgeInsets.all(25),
+      child: Row(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+              shape: BoxShape.circle,
+            ),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.person,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Jone Doe",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              Text(
+                "Driver",
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.tertiary,
+                ),
+              ),
+            ],
+          ),
+          Spacer(),
+          Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.background,
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.message,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.background,
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.call,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
