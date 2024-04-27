@@ -1,14 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:project2/components/setting_button.dart';
 import 'package:project2/components/bottomnav.dart';
 import 'package:project2/components/loading.dart';
+import 'package:project2/pages/display_user.dart';
 import 'package:project2/pages/updateprofile.dart';
 import 'package:project2/services/authService.dart';
 import 'package:project2/services/databaseService.dart';
 import 'package:project2/services/redirecting_service.dart';
-import 'package:intl/intl.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -21,15 +20,12 @@ class _SettingPageState extends State<SettingPage> {
   bool _isLoading = true;
   final AuthService _auth = AuthService();
   final FirestoreService _db = FirestoreService();
-  late String _firstName;
-  late String _lastName;
-  late String _email;
+  late Map<String, dynamic> _data;
 
-  void getInfo() async {
+  void getAllUserData() async {
     try {
-      _firstName = await _db.getUserInfo(_auth.getCurrentUserUID, "fname");
-      _lastName = await _db.getUserInfo(_auth.getCurrentUserUID, "lname");
-      _email = await _db.getUserInfo(_auth.getCurrentUserUID, "email");
+      _data = await _db.getAllUserInfo(_auth.getCurrentUserUID);
+      return;
     } on FirebaseException catch (e) {
       throw Exception(e.toString());
     }
@@ -43,6 +39,7 @@ class _SettingPageState extends State<SettingPage> {
       });
     });
     super.initState();
+    getAllUserData();
   }
 
   @override
@@ -104,7 +101,15 @@ class _SettingPageState extends State<SettingPage> {
                               title: "User Information",
                               subtitle: "See current user information",
                               circle: Colors.black,
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => DisplayUserPage(
+                                      data: _data,
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                             const SizedBox(height: 20),
 
