@@ -49,7 +49,7 @@ class _SettingPageState extends State<SettingPage> {
         foregroundColor: Colors.white,
         title: Text("Setting".toUpperCase()),
         centerTitle: true,
-        elevation: 4,
+        elevation: 6,
         shadowColor: Colors.grey,
       ),
       body: _isLoading
