@@ -3,7 +3,6 @@ import 'package:project2/services/databaseService.dart';
 import 'package:project2/components/bottomnav.dart';
 import 'package:project2/components/loading.dart';
 import 'package:project2/providers/food.dart';
-import 'package:project2/components/receipt.dart';
 import 'package:project2/components/mycheckout.dart';
 
 class CheckoutPage extends StatefulWidget {
@@ -47,11 +46,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
         child: Column(
           children: [
             MyCheckout(),
-            MyReceipt(),
           ],
         ),
       ),
-      bottomNavigationBar: const MyBottomNavBar(currentIndex: 1),
     );
   }
 }
