@@ -16,39 +16,92 @@ class MyCheckout extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "ORDER RECEIPT",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "DRIVER",
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontFamily: 'Georgia',
+                          fontSize: 27,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        // Call driver action
-                      },
-                      icon: const Icon(Icons.call),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        // Message driver action
-                      },
-                      icon: const Icon(Icons.message),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 25),
-            Text(
-              "Estimated Delivery Time: ${estimatedDeliveryTime.hour}:${estimatedDeliveryTime.minute}",
-              style: const TextStyle(
-                fontSize: 16,
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.account_circle_rounded,
+                            size: 50,
+                            color: Colors.teal,
+                          ),
+                          SizedBox(width: 20),
+                          Text(
+                            "Jone Doe",
+                            style: TextStyle(
+                              color: Colors.blueGrey,
+                              fontFamily: 'Courier',
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.call,
+                              size: 35,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.message,
+                              size: 35,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                        Text(
+                        "Estimated Delivery Time: ${estimatedDeliveryTime.hour}:${estimatedDeliveryTime.minute}",
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontFamily: 'Georgia',
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 25),
@@ -62,7 +115,7 @@ class MyCheckout extends StatelessWidget {
               padding: const EdgeInsets.all(25),
               child: Consumer<FoodMethods>(
                 builder: (context, restaurant, child) => Text(
-                  "Driver: John Doe\n\n${restaurant.displayCartReceipt()}",
+                  "${restaurant.displayCartReceipt()}",
                   style: const TextStyle(
                     fontSize: 16,
                   ),
