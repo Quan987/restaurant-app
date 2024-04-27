@@ -124,36 +124,18 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(0),
-                        child: Row(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CircleAvatar(
-                              radius: 50,
-                              backgroundColor: Colors.white,
-                              child: Image.asset(
-                                'lib/images/login-profile.png',
-                                fit: BoxFit.cover,
+                            Center(
+                              child: CircleAvatar(
+                                radius: 50,
+                                backgroundColor: Colors.white,
+                                child: Image.asset(
+                                  'lib/images/login-profile.png',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
-                            const SizedBox(width: 40),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "${toBeginningOfSentenceCase(_firstName)} ${toBeginningOfSentenceCase(_lastName)}",
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 30,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  _email,
-                                  style: TextStyle(
-                                    color: Colors.grey[800],
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              ],
                             ),
                           ],
                         ),
