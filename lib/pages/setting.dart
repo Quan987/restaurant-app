@@ -43,7 +43,6 @@ class _SettingPageState extends State<SettingPage> {
       });
     });
     super.initState();
-    getInfo();
   }
 
   @override
@@ -63,47 +62,19 @@ class _SettingPageState extends State<SettingPage> {
               scrollDirection: Axis.vertical,
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(0),
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 50,
-                            backgroundColor: Colors.white,
-                            child: Image.asset(
-                              'lib/images/login-profile.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          const SizedBox(width: 40),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "${toBeginningOfSentenceCase(_firstName)} ${toBeginningOfSentenceCase(_lastName)}",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 30,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                _email,
-                                style: TextStyle(
-                                  color: Colors.grey[800],
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                    CircleAvatar(
+                      radius: 60,
+                      backgroundColor: Colors.white,
+                      child: Image.asset(
+                        'lib/images/login-profile.png',
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 20),
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -124,9 +95,18 @@ class _SettingPageState extends State<SettingPage> {
                             const Divider(
                               indent: 0,
                               endIndent: 0,
-                              height: 40,
+                              height: 20,
                             ),
                             const SizedBox(height: 10),
+
+                            // Display user information
+                            MySettingWidget(
+                              title: "User Information",
+                              subtitle: "See current user information",
+                              circle: Colors.black,
+                              onTap: () {},
+                            ),
+                            const SizedBox(height: 20),
 
                             // Manage account
                             MySettingWidget(
@@ -200,5 +180,3 @@ class _SettingPageState extends State<SettingPage> {
     );
   }
 }
-
-
