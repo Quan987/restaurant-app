@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project2/services/databaseService.dart';
-import 'package:project2/components/bottomnav.dart';
 import 'package:project2/components/loading.dart';
 import 'package:project2/providers/food.dart';
 import 'package:project2/components/mycheckout.dart';

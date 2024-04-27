@@ -72,16 +72,22 @@ class FoodMethods extends ChangeNotifier {
 
   String displayCartReceipt() {
     final receipt = StringBuffer();
-    receipt.writeln("Here's your receipt:");
+    receipt.writeln("Food Delivery App");
+    receipt.writeln("427 Holcomb Bridge, Atlanta, GA 30022");
+    receipt.writeln("(470) 123-987");
     receipt.writeln();
 
     String formattedDate =
     DateFormat('yyyy-mm-dd hh:mm:ss').format(DateTime.now());
-
-    receipt.writeln(formattedDate);
+    receipt.writeln("Date: $formattedDate");
+    receipt.writeln("Customer: Mira Jane");
+    receipt.writeln("Ticket#: 120");
     receipt.writeln();
+
     receipt.writeln(
-        "---------------------------------------------------------------------");
+        "--------------------------------------------------------------");
+    receipt.writeln(
+        "--------------------------------------------------------------");
     receipt.writeln();
 
     for (final cartItem in _cart) {
@@ -90,12 +96,27 @@ class FoodMethods extends ChangeNotifier {
       receipt.writeln();
     }
     receipt.writeln(
-        "---------------------------------------------------------------------");
+        "--------------------------------------------------------------");
+    receipt.writeln(
+        "--------------------------------------------------------------");
     receipt.writeln();
+
     receipt.writeln("Total Items: ${getTotalItemCount()}");
     receipt.writeln("Total Price: ${_formatPrice(getTotalPrice())}");
     receipt.writeln();
+
     receipt.writeln("Delivering to: $deliveryAddress");
+    receipt.writeln();
+
+    receipt.writeln("PAYMENT DETAILS");
+    receipt.writeln("DISCOVER - 1919               ${_formatPrice(getTotalPrice())}");
+    receipt.writeln();
+
+    receipt.writeln("All Services are Final");
+    receipt.writeln("No Refund; Corrections Only");
+    receipt.writeln("Call us if you have any questions");
+    receipt.writeln("THANK YOU!");
+    receipt.writeln();
 
     return receipt.toString();
   }
