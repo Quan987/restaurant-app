@@ -22,7 +22,7 @@ class _SettingPageState extends State<SettingPage> {
   final FirestoreService _db = FirestoreService();
   late Map<String, dynamic> _data;
 
-  void getAllUserData() async {
+  Future getAllUserData() async {
     try {
       _data = await _db.getAllUserInfo(_auth.getCurrentUserUID);
       return;
@@ -39,7 +39,6 @@ class _SettingPageState extends State<SettingPage> {
       });
     });
     super.initState();
-    getAllUserData();
   }
 
   @override
@@ -101,14 +100,18 @@ class _SettingPageState extends State<SettingPage> {
                               title: "User Information",
                               subtitle: "See current user information",
                               circle: Colors.black,
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => DisplayUserPage(
-                                      data: _data,
-                                    ),
-                                  ),
-                                );
+                              onTap: () async {
+                                await getAllUserData();
+                                // ignore: use_build_context_synchronously
+                                await Navigator.of(context)
+                                    .push(
+                                      MaterialPageRoute(
+                                        builder: (context) => DisplayUserPage(
+                                          data: _data,
+                                        ),
+                                      ),
+                                    )
+                                    .then((_) => setState(() {}));
                               },
                             ),
                             const SizedBox(height: 20),
@@ -119,12 +122,16 @@ class _SettingPageState extends State<SettingPage> {
                               subtitle: "Update account informations",
                               circle: Colors.blue,
                               onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const UpdateProfilePage(),
-                                  ),
-                                );
+                                Navigator.of(context)
+                                    .push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const UpdateProfilePage(),
+                                      ),
+                                    )
+                                    .then((_) => setState(() {
+                                          getAllUserData();
+                                        }));
                               },
                             ),
                             const SizedBox(height: 140),
