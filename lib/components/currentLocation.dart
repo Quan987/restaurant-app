@@ -16,7 +16,9 @@ class MyCurrentLocation extends StatelessWidget {
           title: Text(
             'Your Location',
             style: TextStyle(
-              color: Colors.indigo,
+              color: Colors.teal,
+              fontFamily: 'Georgia',
+              fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -24,7 +26,13 @@ class MyCurrentLocation extends StatelessWidget {
             controller: textController,
             decoration: InputDecoration(
               hintText: "Address",
-              hintStyle: TextStyle(color: Colors.grey),
+              hintStyle: TextStyle(
+                color: Colors.blueGrey,
+                fontFamily: 'Courier',
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+              ),
               filled: true,
               fillColor: Colors.grey.shade200,
               border: OutlineInputBorder(
@@ -62,55 +70,58 @@ class MyCurrentLocation extends StatelessWidget {
       );
     }
 
-    return Padding(
+    return Container(
       padding: const EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 3,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Delivery to',
             style: TextStyle(
-              color: Theme.of(context).colorScheme.primary,
-              fontSize: 18,
+              color: Colors.teal,
+              fontFamily: 'Georgia',
+              fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 10),
           GestureDetector(
             onTap: () => openLocationSearchBox(context),
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 3,
-                    offset: Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Consumer<FoodMethods>(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(
+                  child: Consumer<FoodMethods>(
                     builder: (context, restaurant, child) => Text(
                       restaurant.deliveryAddress,
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
+                        color: Colors.blueGrey,
+                        fontFamily: 'Courier',
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
                       ),
+                      softWrap: true,
                     ),
                   ),
-                  SizedBox(width: 10),
-                  Icon(
-                    Icons.keyboard_arrow_down_rounded,
-                    color: Colors.grey,
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(width: 10),
+                Icon(
+                  Icons.keyboard_arrow_down_rounded,
+                  color: Colors.grey,
+                ),
+              ],
             ),
           ),
         ],
