@@ -12,6 +12,7 @@ class MySettingWidget extends StatelessWidget {
   final String title;
   final String subtitle;
   final Color circle;
+
   final Function()? onTap;
 
   @override
@@ -45,7 +46,7 @@ class MySettingWidget extends StatelessWidget {
             ),
             CircleAvatar(
               backgroundColor: circle,
-              radius: 20,
+              radius: 16,
             ),
           ],
         ),

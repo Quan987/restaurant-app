@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoreService {
-  final CollectionReference orders = FirebaseFirestore.instance.collection('orders');
+  final CollectionReference orders =
+      FirebaseFirestore.instance.collection('orders');
 
   Future<void> saveOrderToDatabase(String receipt) async {
     await orders.add({
-      'data' : DateTime.now(),
+      'data': DateTime.now(),
       'order': receipt,
     });
   }
@@ -42,5 +43,12 @@ class FirestoreService {
     DocumentSnapshot snapshot = await docRef.get();
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
     return data[info];
+  }
+
+  Future<Map<String, dynamic>> getAllUserInfo(String userID) async {
+    DocumentReference docRef = _db.collection("users").doc(userID);
+    DocumentSnapshot snapshot = await docRef.get();
+    Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+    return data;
   }
 }

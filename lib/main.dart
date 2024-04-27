@@ -23,7 +23,7 @@ class FoodDeliveryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const RedirectingService()
+      home: const RedirectingService(),
     );
   }
 }
