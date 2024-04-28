@@ -21,7 +21,7 @@ Please refer to the [Project Proposal](https://drive.google.com/file/d/1Vieu1Uh5
 - [**APK File**](https://drive.google.com/file/d/1ggewI1ZYdKtv50G4vSarI_2wMTThTOJu/view?usp=sharing)
 - [**PowerPoint Presentation**](https://docs.google.com/presentation/d/1-mUtVWHvwxqZzEBvqExIQ4lfc3jhRgiE/edit?usp=sharing&ouid=115063291951967236235&rtpof=true&sd=true)
 - [**Youtube Video**](https://www.youtube.com/watch?v=9HGGhIzT7bo)
-- 
+  
 ## Key Features
 - **Diverse Restaurant Offerings**: The application will provide users with a wide range of restaurants available for on-demand delivery.
 - **Seamless Order Placement and Tracking**: Users will be able to easily place orders, select delivery options, and track the status of their deliveries in real-time.
