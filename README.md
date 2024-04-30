@@ -71,5 +71,6 @@ This project is licensed under the [LICENSE](https://github.com/CSC4360Project2/
 For any inquiries or suggestions regarding the Food Delivery Application project, please contact:
 
 - Sophie Nguyen: [nnguyen177@student.gsu.edu](mailto:nnguyen177@student.gsu.edu)
+- Quan Tran: [qtran16@student.gsu.edu](mailto:qtran16@student.gsu.edu)
 
 Thank you for your interest in our project! We look forward to your contributions and feedback. Happy coding! 🚀
